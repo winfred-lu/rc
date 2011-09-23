@@ -20,18 +20,37 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-xterm-color)
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    ;;
-*)
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    ;;
-esac
-
-# Comment in the above and uncomment this below for a color prompt
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# color prompt
+force_color_prompt=yes
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+if [ "$color_prompt" = yes ]; then
+  if [ "$WINDOW" ]; then
+    if [ `id -u` == "0" ]; then
+      PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[32m\]W$WINDOW\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\[\033[1;31m\]\\$\[\033[0m\] "
+    else
+      PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[32m\]W$WINDOW\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\\$ "
+    fi
+  else
+    if [ `id -u` == "0" ]; then
+      PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\[\033[1;31m\]\\$\[\033[0m\] "
+    else
+      PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\\$ "
+    fi
+  fi
+else
+  if [ "$WINDOW" ]; then
+    PS1="[\h][W$WINDOW][\w]\\$ "
+  else
+    PS1="[\h][\w]\\$ "
+  fi
+fi
+unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -54,9 +73,11 @@ esac
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    alias ls='ls -F --color=auto'
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
+else
+    alias ls='ls -F'
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -66,14 +87,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-if [ "$WINDOW" ]; then
-  PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[32m\]W$WINDOW\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\\$ "
-else
-  PS1="[\[\033[36m\]\h\[\033[0m\]][\[\033[1;33m\]\w\[\033[0m\]]\\$ "
-fi
-
 stty -ixon
-#eval `dircolors`
 #set -o vi
 
 export PATH=/opt/buildroot-gcc342/bin:$PATH
@@ -106,11 +120,10 @@ alias cde='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2/linux-2
 alias b=exit
 alias grep='grep -I -n --color --exclude=tags --exclude=cscope.out --exclude=cscope.files --exclude=.#*'
 alias ls='ls -F --color=auto'
-alias les='less -X'
 alias vi=vim
-alias gencs='find $PWD -type f -name "*.[chxsS]" -a ! -path "*RT3090_ap*" -a ! -path "*RT3572_ap*" > cscope.files; cscope -b -k; ctags -R -n'
+alias gencs='find $PWD -type f -name "*.[chxsS]" -a ! -path "*RT3090_ap*" -a ! -path "*RT3572_ap*" > cscope.files; cscope -v -b -k; ctags -R -n'
 alias man="LANG=en_US.iso8859-1 man"
+
 alias ma='if [ `basename $PWD` = "Uboot" ]; then make clean; make; fi'
 alias mm='make menuconfig'
 alias md='make dep; make'
-
