@@ -22,11 +22,20 @@ bindkey "\e[3~" delete-char
 alias b="exit"
 alias ls="ls -F --color=auto"
 alias grep="grep --color=auto"
-
-# prompt
-PROMPT="%F{cyan}%~%f %% "
+alias mm="make menuconfig"
+alias md="make dep; make"
+alias mc="make clean; make"
 
 setopt AUTO_PUSHD
 
 export EDITOR="vim"
 
+# prompt
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' actionformats '%s%F{3}(%f%b%F{3})%f '
+zstyle ':vcs_info:cvs:*' formats       '%s '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r '
+zstyle ':vcs_info:*' enable git cvs svn
+precmd () { vcs_info }
+PROMPT='${vcs_info_msg_0_}%F{6}%3~%f %# '
