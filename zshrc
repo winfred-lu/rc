@@ -28,3 +28,5 @@ PROMPT="%F{cyan}%~%f %% "
 
 setopt AUTO_PUSHD
 
+export EDITOR="vim"
+
