@@ -12,11 +12,20 @@ compinit
 HISTFILE=~/.history
 HISTSIZE=5000
 SAVEHIST=10000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 
 # key bindings
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey "\e[3~" delete-char
+bindkey '\e[C' forward-char
+bindkey '\e[D' backward-char
+bindkey -s '\eu' 'cd ..^M'
+bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
@@ -27,8 +36,14 @@ alias md="make dep; make"
 alias mc="make clean; make"
 alias gencs='find $PWD -type f -name "*.[chxsS]" -a ! -path "*RT3090_ap*" -a ! -path "*RT3572_ap*" > cscope.files; cscope -v -b -k; ctags -R -n'
 
-setopt AUTO_PUSHD
 stty -ixon
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt CORRECT
+setopt CORRECTALL
+setopt NO_FLOW_CONTROL
+setopt NO_CLOBBER
+setopt RM_STAR_WAIT
 
 export EDITOR="vim"
 
