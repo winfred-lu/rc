@@ -9,6 +9,23 @@
 (setq viper-mode t)
 (require 'viper)
 
+;;; imap jj to ESC
+(defun viper-escape-if-next-char (c)
+  (self-insert-command 1)
+    (let ((next-key (read-event)))
+      (if (= c next-key)
+        (progn
+          (delete-backward-char 1)
+            (viper-mode))
+            (setq unread-command-events (list next-key)))))
+(defun viper-escape-if-next-char-is-j (arg)
+  (interactive "p")
+    (if (= arg 1)
+      (viper-escape-if-next-char ?j)
+        (self-insert-command arg)))
+(define-key viper-insert-basic-map (kbd "j") 'viper-escape-if-next-char-is-j)
+
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
