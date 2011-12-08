@@ -19,6 +19,7 @@
 # ------------------------------------------------------------------------------
 # SCREEN SETTINGS
 # ------------------------------------------------------------------------------
+defutf8 on
 
 startup_message off
 #nethack on
@@ -89,6 +90,9 @@ termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 #
 #termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
+# Enable non-blocking mode to better cope with flaky ssh connections.
+defnonblock 5
+
 ################
 #
 # 256 color terminals
@@ -118,6 +122,4 @@ defbce "on"
 # screen -t monkey ssh monkey
 # screen -t mail 8 mutt
 # screen -t daemon 9 tail -f /var/log/daemon.log
-screen -t sdk 0
-#screen -t Uboot 1
-#screen -t kern 2
+screen -t r0t 0
