@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# /etc/X11/xinit/xinitrc
+#
+# global xinitrc file, used by all X sessions started by xinit (startx)
+#export LC_ALL=zh_TW.UTF8
+#export LANG=zh_TW.UTF8
+export XMODIFIERS='@im=xcin'
+export GTK_IM_MODULE="xcin"
+export QT_IM_MODULE="xcin"
+exec /usr/bin/gcin &
+
+# invoke global X session script
+. /etc/X11/Xsession
+
