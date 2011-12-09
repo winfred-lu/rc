@@ -5,9 +5,9 @@
 # global xinitrc file, used by all X sessions started by xinit (startx)
 #export LC_ALL=zh_TW.UTF8
 #export LANG=zh_TW.UTF8
-export XMODIFIERS='@im=xcin'
-export GTK_IM_MODULE="xcin"
-export QT_IM_MODULE="xcin"
+export XMODIFIERS='@im=gcin'
+export GTK_IM_MODULE="gcin"
+export QT_IM_MODULE="gcin"
 exec /usr/bin/gcin &
 
 # invoke global X session script
