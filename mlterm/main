@@ -28,4 +28,4 @@ fg_color=gray
 bg_color=black
 # ENCODING=auto
 # fontsize=16
-word_separators=" ,;|()[]{}"
+word_separators="`\"()'*<>[]{|}"
