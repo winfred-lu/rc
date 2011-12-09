@@ -28,4 +28,5 @@ fg_color=gray
 bg_color=black
 # ENCODING=auto
 # fontsize=16
+geometry=80x36
 word_separators="`\"()'*<>[]{|}"
