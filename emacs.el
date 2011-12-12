@@ -3,6 +3,7 @@
 ;;; color terminal
 (add-to-list 'load-path "color-theme.el")
 (require 'color-theme)
+(color-theme-initialize)
 (eval-after-load "color-theme" '(color-theme-clarity))
 
 ;;; viper
@@ -31,8 +32,15 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
+(setq org-agenda-include-diary t)
 (setq org-agenda-files (list "~/org/work.org"
                              "~/org/home.org"))
+(setq browse-url-browser-function (quote browse-url-generic))
+(setq browse-url-generic-program "chromium-browser")
+;; for mobile org
+(setq org-directory "~/org")
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+(setq org-mobile-directory "~/Dropbox/org")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
