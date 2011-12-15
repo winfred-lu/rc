@@ -29,12 +29,14 @@ bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
+alias emacs="emacs -nw"
 alias ls="ls -F --color=auto"
 alias grep="grep --color=auto"
-alias mm="make menuconfig"
-alias md="make dep; make"
-alias mc="make clean; make"
-alias gencs='find $PWD -type f -name "*.[chxsS]" -a ! -path "*RT3090_ap*" -a ! -path "*RT3572_ap*" > cscope.files; cscope -v -b -k; ctags -R -n'
+alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n'
+
+# nocorrect
+alias irssi="nocorrect irssi"
+alias git="nocorrect git"
 
 stty -ixon
 setopt AUTO_CD
@@ -45,10 +47,18 @@ setopt NO_FLOW_CONTROL
 setopt NO_CLOBBER
 setopt RM_STAR_WAIT
 
+# env
 export EDITOR="vim"
+export PAGER="less -X"
+
+# paths
+#export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
+export PATH="$PATH:/opt/arm-2011.03/bin"
+export PATH="$PATH:/home/winfred/buildroot-2011.08/output/host/usr/bin"
+export PATH="$PATH:/home/winfred/bin"
 
 # prompt
-PROMPT='%F{6}%~%f %# '
+PROMPT='%F{5}%m %F{6}%~ %(!.%F{1}.%f)%#%f '
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
