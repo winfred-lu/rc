@@ -49,7 +49,8 @@ setopt RM_STAR_WAIT
 
 # env
 export EDITOR="vim"
-export PAGER="less -X"
+export PAGER="less"
+export LESS="-FRX"
 
 # paths
 #export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
