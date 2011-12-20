@@ -1,4 +1,5 @@
 (setq load-path (cons "/usr/share/emacs/site-lisp/emacs-goodies-el" load-path))
+(setq load-path (cons "~/.emacs.d/" load-path))
 
 ;;; color terminal
 (add-to-list 'load-path "color-theme.el")
@@ -55,8 +56,11 @@
                      (org-insert-heading)
                      (evil-append nil)
                      ))
- 
-;;; org mode
+
+(define-key evil-normal-state-map "[[" 'c-beginning-of-defun)
+(define-key evil-normal-state-map "[]" 'c-end-of-defun)
+
+;;; org mod settings
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
@@ -67,10 +71,28 @@
                              "~/org/home.org"))
 (setq browse-url-browser-function (quote browse-url-generic))
 (setq browse-url-generic-program "chromium-browser")
-;; for mobile org
+
+;; mobile org settings
 (setq org-directory "~/org")
 (setq org-mobile-inbox-for-pull "~/org/flagged.org")
 (setq org-mobile-directory "~/Dropbox/org")
+
+;;; customized global key bindings
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+;;; c settings
+(require 'cc-mode)
+(setq c-default-style "linux"
+      c-basic-offset 8)
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
+;;; magit
+(require 'git)
+(require 'magit)
+
+;;; auto pair
+(require 'autopair)
+(autopair-global-mode)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -79,9 +101,11 @@
   ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(c-tab-always-indent nil)
  '(column-number-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(menu-bar-mode nil)
+ '(show-paren-delay 0)
  '(show-paren-mode t)
  '(vc-follow-symlinks nil))
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -92,4 +116,3 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
