@@ -77,8 +77,11 @@
 (setq org-mobile-inbox-for-pull "~/org/flagged.org")
 (setq org-mobile-directory "~/Dropbox/org")
 
-;;; customized global key bindings
+;;; buffer switching
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
+(iswitchb-mode 1)
+(setq iswitchb-buffer-ignore '("^ " "*Buffer"))
+(setq iswitchb-delim " | ")
 
 ;;; c settings
 (require 'cc-mode)
@@ -87,7 +90,6 @@
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
 ;;; magit
-(require 'git)
 (require 'magit)
 
 ;;; auto pair
