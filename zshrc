@@ -29,7 +29,7 @@ bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
-alias emacs="emacs -nw"
+alias emacs="emacsclient -nw"
 alias ls="ls -F --color=auto"
 alias grep="grep --color=auto"
 alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n'
@@ -48,6 +48,7 @@ setopt NO_CLOBBER
 setopt RM_STAR_WAIT
 
 # env
+export ALTERNATE_EDITOR=""    # for emacsclient
 export EDITOR="vim"
 export PAGER="less"
 export LESS="-FRX"
