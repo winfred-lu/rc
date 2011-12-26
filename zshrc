@@ -31,7 +31,6 @@ bindkey -s '\ep' 'dirs -v^M'
 alias b="exit"
 alias emacs="emacsclient -nw"
 alias ls="ls -F --color=auto"
-alias grep="grep --color=auto"
 alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n'
 
 # nocorrect
@@ -52,6 +51,7 @@ export ALTERNATE_EDITOR=""    # for emacsclient
 export EDITOR="vim"
 export PAGER="less"
 export LESS="-FRX"
+export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=cscope.\*"
 
 # paths
 #export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
