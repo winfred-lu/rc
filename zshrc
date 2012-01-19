@@ -19,7 +19,7 @@ setopt HIST_REDUCE_BLANKS
 
 # key bindings
 bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey "\e[3~" delete-char
 bindkey '\e[C' forward-char
@@ -29,9 +29,9 @@ bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
-alias emacs="emacsclient -nw"
+alias em="emacsclient -nw"
 alias ls="ls -F --color=auto"
-alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n'
+alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n -e; ctags -R -n'
 
 # nocorrect
 alias irssi="nocorrect irssi"
@@ -51,12 +51,14 @@ export ALTERNATE_EDITOR=""    # for emacsclient
 export EDITOR="vim"
 export PAGER="less"
 export LESS="-FRX"
-export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=cscope.\*"
+export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=cscope.\*"
 
 # paths
 #export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
-export PATH="$PATH:/opt/arm-2011.03/bin"
+#export PATH="$PATH:/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi"
+#export PATH="$PATH:/opt/arm-2011.03/bin"
 export PATH="$PATH:/home/winfred/buildroot-2011.08/output/host/usr/bin"
+export PATH="$PATH:/sbin:/usr/sbin"
 export PATH="$PATH:/home/winfred/bin"
 
 # prompt
