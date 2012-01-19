@@ -57,9 +57,9 @@ export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=csc
 #export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
 #export PATH="$PATH:/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi"
 #export PATH="$PATH:/opt/arm-2011.03/bin"
-export PATH="$PATH:/home/winfred/buildroot-2011.08/output/host/usr/bin"
+export PATH="$PATH:$HOME/buildroot/output/host/usr/bin"
 export PATH="$PATH:/sbin:/usr/sbin"
-export PATH="$PATH:/home/winfred/bin"
+export PATH="$PATH:$HOME/bin"
 
 # prompt
 PROMPT='%F{5}%m %F{6}%~ %(!.%F{1}.%f)%#%f '
