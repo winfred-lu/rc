@@ -74,7 +74,10 @@ hardstatus string "%h%? users: %u%?"
 # enabled if there is no hardstatus setting for your terminal)
 #
 #hardstatus lastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
-hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw"
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw"
+
+#caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c"
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w"
 
 # set these terminals up to be 'optimal' instead of vt100
 termcapinfo xterm*|linux*|rxvt*|Eterm* OP
