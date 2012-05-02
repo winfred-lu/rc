@@ -1,7 +1,9 @@
+# -*- mode: sh -*-
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
-zstyle ':completion:*' matcher-list '' '' '' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' '' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle :compinstall filename '/home/winfred/.zshrc'
 
 autoload -Uz compinit
@@ -24,14 +26,17 @@ bindkey '^R' history-incremental-search-backward
 bindkey "\e[3~" delete-char
 bindkey '\e[C' forward-char
 bindkey '\e[D' backward-char
+bindkey '\e^?' backward-delete-word
 bindkey -s '\eu' 'cd ..^M'
 bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
-alias em="emacsclient -nw"
+#alias em="emacsclient -nw"
+alias em="emacs -nw"
 alias ls="ls -F --color=auto"
-alias gencs='find $PWD -type f -name "*.[chxsS]" > cscope.files; cscope -v -b -k; ctags -R -n -e; ctags -R -n'
+#alias gencs='find $PWD -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e; ctags -R -n'
+alias gencs='find . -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e'
 
 # nocorrect
 alias irssi="nocorrect irssi"
@@ -59,7 +64,7 @@ export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=csc
 #export PATH="$PATH:/opt/arm-2011.03/bin"
 export PATH="$PATH:$HOME/buildroot/output/host/usr/bin"
 export PATH="$PATH:/sbin:/usr/sbin"
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin:./"
 
 # prompt
 PROMPT='%F{5}%m %F{6}%~ %(!.%F{1}.%f)%#%f '
@@ -77,3 +82,6 @@ vcs_info_wrapper() {
   fi
 }
 RPROMPT=$'$(vcs_info_wrapper)'
+
+autoload run-help
+bindkey '\eh' run-help
