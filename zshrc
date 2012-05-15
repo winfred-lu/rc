@@ -3,7 +3,10 @@
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
-zstyle ':completion:*' matcher-list '' '' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' ignore-parents parent pwd .. directory
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle :compinstall filename '/home/winfred/.zshrc'
 
 autoload -Uz compinit
@@ -14,6 +17,7 @@ compinit
 HISTFILE=~/.history
 HISTSIZE=5000
 SAVEHIST=10000
+export HISTIGNORE="&:ls:b:exit:clear:cd:cd .."
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
@@ -32,8 +36,7 @@ bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
-#alias em="emacsclient -nw"
-alias em="emacs -nw"
+alias em="emacsclient -nw"
 alias ls="ls -F --color=auto"
 #alias gencs='find $PWD -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e; ctags -R -n'
 alias gencs='find . -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e'
@@ -50,6 +53,7 @@ setopt CORRECTALL
 setopt NO_FLOW_CONTROL
 setopt NO_CLOBBER
 setopt RM_STAR_WAIT
+set ignoreeof on
 
 # env
 export ALTERNATE_EDITOR=""    # for emacsclient
