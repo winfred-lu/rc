@@ -30,3 +30,6 @@ bg_color=black
 # fontsize=16
 geometry=80x30
 word_separators=" `\"()'*<>[]{|}"
+receive_string_via_ucs=true
+blink_cursor=true
+cursor_bg_color=#22dd00
