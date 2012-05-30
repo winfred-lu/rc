@@ -2,8 +2,10 @@ URxvt.background: black
 URxvt.foreground: gray
 URxvt.cursorBlink: true
 URxvt.cursorColor: #22dd00
-URxvt.font: xft:DejaVuSansMono:size=10, \
+URxvt.font: xft:Monaco:size=10, \
+            xft:DejaVu Sans Mono:size=10, \
             xft:AR PL UMing TW, \
+            xft:AR PL Mingti2L Big5, \
             8x16
 URxvt.geometry: 80x30
 URxvt.scrollBar: false
