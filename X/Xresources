@@ -1,3 +1,11 @@
+URxvt.background: black
+URxvt.foreground: gray
+URxvt.cursorBlink: true
+URxvt.cursorColor: #22dd00
+URxvt.font: xft:DejaVuSansMono:size=10, \
+            xft:AR PL UMing TW, \
+            8x16
+URxvt.scrollBar: false
 UXTerm*eightBitInput: false
 XTerm*eightBitInput: false
 
