@@ -10,6 +10,8 @@ export GTK_IM_MODULE="gcin"
 export QT_IM_MODULE="gcin"
 exec /usr/bin/gcin &
 
+xrdb -merge ~/.Xresources
+
 # invoke global X session script
 . /etc/X11/Xsession
 
