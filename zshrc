@@ -38,8 +38,7 @@ bindkey -s '\ep' 'dirs -v^M'
 alias b="exit"
 alias em="emacsclient -nw"
 alias ls="ls -F --color=auto"
-#alias gencs='find $PWD -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e; ctags -R -n'
-alias gencs='find . -type f -name "*.[chxsS]" >! cscope.files; cscope -v -b -k; ctags -R -n -e'
+alias gencs='find . -type f -name "*.[chxsS]" -o -name "*.cpp" >! cscope.files; cscope -b -k; ctags -R -n -e'
 
 # nocorrect
 alias irssi="nocorrect irssi"
@@ -61,6 +60,23 @@ export EDITOR="vim"
 export PAGER="less"
 export LESS="-FRX"
 export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=cscope.\*"
+case $TTY in
+/dev/pts*)
+    export TERM=rxvt-unicode-256color
+    ;;
+*)
+    export TERM=xterm-256color
+    ;;
+esac
+
+# colored less
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;120m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # paths
 #export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
