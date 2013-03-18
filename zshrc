@@ -15,8 +15,8 @@ compinit
 
 # history
 HISTFILE=~/.history
-HISTSIZE=5000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=2000
 export HISTIGNORE="&:ls:b:exit:clear:cd:cd .."
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
