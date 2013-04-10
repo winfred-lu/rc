@@ -1,0 +1,27 @@
+*        text=auto
+
+*.c      text diff=cpp
+*.cpp    text diff=cpp
+*.h      text diff=cpp
+*.cs     text diff=csharp
+*.html   text diff=html
+*.py     text diff=python
+
+*.asm    text
+*.css    text
+
+*.csproj text merge=union
+*.sln    text merge=union eol=crlf
+
+*.png binary
+*.jpg binary
+*.gif binary
+
+*.doc    diff=astextplain
+*.DOC    diff=astextplain
+*.docx   diff=astextplain
+*.DOCX   diff=astextplain
+*.pdf    diff=astextplain
+*.PDF    diff=astextplain
+*.rtf    diff=astextplain
+*.RTF    diff=astextplain
