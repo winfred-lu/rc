@@ -1,0 +1,11 @@
+*.o
+*.a
+tags
+cscope.files
+cscope.out
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+*.pyc
+*.elc
