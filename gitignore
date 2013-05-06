@@ -1,6 +1,7 @@
 *.o
 *.a
 tags
+TAGS
 cscope.files
 cscope.out
 GPATH
