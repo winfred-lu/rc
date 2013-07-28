@@ -36,7 +36,8 @@ bindkey -s '\ep' 'dirs -v^M'
 
 # aliases
 alias b="exit"
-alias em="emacsclient -nw"
+alias e="emacsclient -nw"
+alias E='SUDO_EDITOR="emacsclient -t -a emacs" sudoedit'
 alias ls="ls -F --color=auto"
 alias gencs='find . -type f -name "*.[chxsS]" -o -name "*.cpp" >! cscope.files; cscope -b -k; ctags -R -n -e'
 
