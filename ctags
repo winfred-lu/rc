@@ -1,3 +1,7 @@
 --langdef=is
 --langmap=is:.rul
 --regex-is=/^[ \t]*function[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-is=/^[ \t]*function[ \t]+BOOL[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-is=/^[ \t]*function[ \t]+NUMBER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-is=/^[ \t]*function[ \t]+POINTER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-is=/^[ \t]*function[ \t]+STRING[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
