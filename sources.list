@@ -1,5 +1,11 @@
 ### Debian Tesing(wheezy) Repos ###
 
+## Debian US ##
+deb http://ftp.us.debian.org/debian/ testing main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ testing main contrib non-free
+deb http://ftp.us.debian.org/debian/ testing-proposed-updates main
+deb-src http://ftp.us.debian.org/debian/ testing-proposed-updates main
+
 ## Debian Taiwan (debian.linux.org.tw) ##
 #deb http://ftp.tw.debian.org/debian/ testing main contrib non-free
 #deb-src http://ftp.tw.debian.org/debian/ testing main contrib non-free
@@ -7,11 +13,27 @@
 #deb-src http://ftp.tw.debian.org/debian/ testing-proposed-updates main
 
 ## NCTU ##
-deb http://debian.nctu.edu.tw/debian/ testing main contrib non-free
-deb-src http://debian.nctu.edu.tw/debian/ testing main contrib non-free
-deb http://debian.nctu.edu.tw/debian/ testing-proposed-updates main
-deb-src http://debian.nctu.edu.tw/debian/ testing-proposed-updates main
+#deb http://debian.nctu.edu.tw/debian/ testing main contrib non-free
+#deb-src http://debian.nctu.edu.tw/debian/ testing main contrib non-free
+#deb http://debian.nctu.edu.tw/debian/ testing-proposed-updates main
+#deb-src http://debian.nctu.edu.tw/debian/ testing-proposed-updates main
 
 ## Security updates ##
 deb http://security.debian.org/ testing/updates main
 deb-src http://security.debian.org/ testing/updates main
+
+## emacs-snapshot
+deb http://emacs.naquadah.org/ stable/
+deb-src http://emacs.naquadah.org/ stable/
+
+## svn 17
+deb http://opensource.wandisco.com/debian/ squeeze svn17
+#deb http://ftp.us.debian.org/debian/ sid svn17
+
+## Sun Java 6 JDK
+deb http://archive.canonical.com/ lucid partner
+
+## info ##
+# squeeze-updates, previously known as 'volatile'
+# --> testing-proposed-updates (wheezy)
+
