@@ -107,7 +107,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 stty -ixon
-#set -o vi
+set -o vi
 
 export PATH=/opt/buildroot-gcc342/bin:$PATH
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin
@@ -142,4 +142,3 @@ alias ls='ls -F --color=auto'
 alias vi=vim
 alias gencs='find $PWD -type f -name "*.[chxsS]" -a ! -path "*RT3090_ap*" -a ! -path "*RT3572_ap*" > cscope.files; cscope -v -b -k; ctags -R -n'
 alias man="LANG=en_US.iso8859-1 man"
-
