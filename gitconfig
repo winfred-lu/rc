@@ -14,3 +14,5 @@
 	excludesfile = /home/winfred/.gitignore
         autocrlf = input
         safecrlf = warn
+[push]
+	default = simple
