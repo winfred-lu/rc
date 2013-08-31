@@ -63,10 +63,19 @@ export LESS="-FRX"
 export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=cscope.\*"
 case $TTY in
 /dev/pts*)
-    export TERM=rxvt-unicode-256color
+    if [[ -n $TMUX ]]; then
+        export TERM=screen-256color-bce
+    else
+        export TERM=rxvt-unicode-256color
+    fi
     ;;
 *)
-    export TERM=xterm-256color
+    uname=`uname`
+    if [[ $uname[1,6] = "CYGWIN" ]]; then
+        export TERM=rxvt-256color
+    else
+        export TERM=xterm-256color
+    fi
     ;;
 esac
 
