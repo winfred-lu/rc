@@ -78,6 +78,7 @@ case $TTY in
     fi
     ;;
 esac
+export MINICOM='-c on'
 
 # colored less
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking

@@ -122,6 +122,7 @@ export CVS_RSH=ssh
 #export CVSROOT=":ext:winfred@cvs:/home/cvsroot"
 export HISTSIZE=5000
 #export DISPLAY="192.168.43.99:0"
+export MINICOM='-c on'
 
 export J2RE_HOME=/usr/lib/jvm/java-1.5.0-sun/jre
 export JAVA_HOME=/usr/lib/jvm/java-1.5.0-sun/jre
@@ -129,14 +130,10 @@ export ANDROID_JAVA_HOME=/usr/lib/jvm/java-1.5.0-sun/jre
 export PATH=/usr/lib/jvm/java-1.5.0-sun/bin:$PATH
 export PERL5LIB=~/perl5/lib/perl5
 
-alias cdr='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2|"`'
-alias cdu='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2/user|"`'
-#alias cdk='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2/linux-2.6.21.x|"`'
-alias cdk='cd `echo $PWD | sed -e "s|\(.*\)\(linux\)\([a-zA-Z0-9._-]*\)/.*|\1\2\3/|"`'
-alias cdw='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2/linux-2.6.21.x/drivers/net/wireless/rt2860v2|"`'
-alias cde='cd `echo $PWD | sed -e "s|\(/home/winfred/\)\([^/]\+\).*|\1\2/linux-2.6.21.x/drivers/net/raeth|"`'
 
 alias b=exit
+alias e="emacsclient -nw"
+alias E='SUDO_EDITOR="emacsclient -t -a emacs" sudoedit'
 alias grep='grep -I -n --color --exclude=tags --exclude=cscope.out --exclude=cscope.files --exclude=.#*'
 alias ls='ls -F --color=auto'
 alias vi=vim
