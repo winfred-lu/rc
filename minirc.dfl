@@ -1,0 +1,9 @@
+pu port             /dev/ttyUSB0
+pu escape-key       ^O
+pu backspace        BS
+pu mfcolor          CYAN
+pu mbcolor          BLACK
+pu tfcolor          WHITE
+pu tbcolor          BLACK
+pu sfcolor          WHITE
+pu sbcolor          BLUE
