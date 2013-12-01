@@ -1,7 +1,8 @@
-URxvt.background: black
+URxvt.background: [90]#000000
 URxvt.foreground: gray
 URxvt.cursorBlink: true
 URxvt.cursorColor: #22dd00
+URxvt.depth: 32
 URxvt.font: xft:Monaco:size=10, \
             xft:DejaVu Sans Mono:size=10, \
             xft:AR PL UMing TW, \
@@ -9,8 +10,7 @@ URxvt.font: xft:Monaco:size=10, \
             8x16
 URxvt.geometry: 80x30
 URxvt.scrollBar: false
-URxvt.transparent: true
-URxvt.shading: 30
+!URxvt.transparent: true
+!URxvt.shading: 20
 UXTerm*eightBitInput: false
 XTerm*eightBitInput: false
-
