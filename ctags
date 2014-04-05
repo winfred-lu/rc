@@ -5,3 +5,10 @@
 --regex-is=/^[ \t]*function[ \t]+NUMBER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
 --regex-is=/^[ \t]*function[ \t]+POINTER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
 --regex-is=/^[ \t]*function[ \t]+STRING[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--langdef=iss
+--langmap=iss:.Rul
+--regex-iss=/^[ \t]*function[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-iss=/^[ \t]*function[ \t]+BOOL[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-iss=/^[ \t]*function[ \t]+NUMBER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-iss=/^[ \t]*function[ \t]+POINTER[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
+--regex-iss=/^[ \t]*function[ \t]+STRING[ \t]+([a-zA-Z0-9_]+)/\1/f,function/
