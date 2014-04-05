@@ -90,12 +90,17 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # paths
-#export PATH="$PATH:/opt/CodeSourcery/Sourcery_G++_Lite/bin"
-#export PATH="$PATH:/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi"
-#export PATH="$PATH:/opt/arm-2011.03/bin"
-export PATH="$PATH:$HOME/buildroot/output/host/usr/bin"
 export PATH="$PATH:/sbin:/usr/sbin"
 export PATH="$PATH:$HOME/bin:./"
+
+## toolchain path in the front to make sure the toolchain will be used by default
+## ELDK toolchain
+#export PATH="/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH"
+## Launchpad toolchain
+#export PATH="/opt/arm-2011.03/bin:$PATH"
+export PATH="/opt/gcc-arm-none-eabi-4_8-2013q4/bin:$PATH"
+## Buildroot toolchain
+#export PATH="$HOME/buildroot/output/host/usr/bin:$PATH"
 
 # prompt
 PROMPT='%F{5}%m %F{6}%~ %(!.%F{1}.%f)%#%f '
