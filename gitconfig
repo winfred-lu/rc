@@ -12,7 +12,10 @@
 
 [core]
 	excludesfile = /home/winfred/.gitignore
-        autocrlf = input
-        safecrlf = warn
+	autocrlf = false
+	safecrlf = warn
+	#gitproxy = /home/winfred/bin/gitproxy.sh
 [push]
 	default = simple
+[merge]
+	tool = vimdiff
