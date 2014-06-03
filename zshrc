@@ -93,14 +93,44 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export PATH="$PATH:/sbin:/usr/sbin"
 export PATH="$PATH:$HOME/bin:./"
 
-## toolchain path in the front to make sure the toolchain will be used by default
-## ELDK toolchain
-#export PATH="/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi:$PATH"
-## Launchpad toolchain
-#export PATH="/opt/arm-2011.03/bin:$PATH"
-export PATH="/opt/gcc-arm-none-eabi-4_8-2013q4/bin:$PATH"
-## Buildroot toolchain
-#export PATH="$HOME/buildroot/output/host/usr/bin:$PATH"
+# toolchain settings
+function wf-remove-toolchain-from-path() {
+    if [ $PATH[1,5] = "/opt/" ]; then     # if PATH (first element) starts with "/opt/"
+        export PATH=${PATH#*:}            # take part after first :
+    fi
+}
+function use-linaro-baremetal() {
+    local tcpath=/opt/gcc-arm-none-eabi-4_8-2014q1/bin
+    export CROSS_COMPILE=arm-none-eabi-
+    wf-remove-toolchain-from-path
+    export PATH=$tcpath:$PATH
+    echo "path = $tcpath"
+    echo "CROSS_COMPILE = $CROSS_COMPILE"
+}
+function use-linaro-linux() {
+    local tcpath=/opt/gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux/bin
+    export CROSS_COMPILE=arm-linux-gnueabihf-
+    wf-remove-toolchain-from-path
+    export PATH=$tcpath:$PATH
+    echo "path = $tcpath"
+    echo "CROSS_COMPILE = $CROSS_COMPILE"
+}
+function use-sourcery-uclinux() {
+    local tcpath=/opt/arm-2010q1/bin
+    export CROSS_COMPILE=arm-uclinuxeabi-
+    wf-remove-toolchain-from-path
+    export PATH=$tcpath:$PATH
+    echo "path = $tcpath"
+    echo "CROSS_COMPILE = $CROSS_COMPILE"
+}
+function use-eldk() {
+    local tcpath=/opt/eldk-5.1/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi
+    export CROSS_COMPILE=arm-linux-gnueabi-
+    wf-remove-toolchain-from-path
+    export PATH=$tcpath:$PATH
+    echo "path = $tcpath"
+    echo "CROSS_COMPILE = $CROSS_COMPILE"
+}
 
 # prompt
 PROMPT='%F{5}%m %F{6}%~ %(!.%F{1}.%f)%#%f '
