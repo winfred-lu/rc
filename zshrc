@@ -55,12 +55,31 @@ setopt NO_CLOBBER
 setopt RM_STAR_WAIT
 set ignoreeof on
 
+# customized grep options
+GREP_OPTIONS="-I --color=auto"
+GREP_OPTIONS+=" --exclude=tags --exclude=TAGS --exclude=cscope.\*"
+grep-flag-available() {
+    echo | grep $1 "" >/dev/null 2>&1
+}
+if grep-flag-available --exclude-dir=.cvs; then
+    for PATTERN in .cvs .git .hg .svn; do
+        GREP_OPTIONS+=" --exclude-dir=$PATTERN"
+    done
+elif grep-flag-available --exclude=.cvs; then
+    for PATTERN in .cvs .git .hg .svn; do
+        GREP_OPTIONS+=" --exclude=$PATTERN"
+    done
+fi
+unfunction grep-flag-available
+
+# alias grep since GREP_OPTIONS is deprecated
+alias grep="grep $GREP_OPTIONS"
+
 # env
 export ALTERNATE_EDITOR=""    # for emacsclient
 export EDITOR="vim"
 export PAGER="less"
 export LESS="-FRX"
-export GREP_OPTIONS="-I --color=auto --exclude=tags --exclude=TAGS --exclude=cscope.\*"
 case $TTY in
 /dev/pts*)
     if [[ -n $TMUX ]]; then
@@ -100,7 +119,15 @@ function wf-remove-toolchain-from-path() {
     fi
 }
 function use-linaro-baremetal() {
-    local tcpath=/opt/gcc-arm-none-eabi-4_8-2014q1/bin
+    local tcpath=/opt/gcc-arm-none-eabi-4_8-2014q2/bin
+    export CROSS_COMPILE=arm-none-eabi-
+    wf-remove-toolchain-from-path
+    export PATH=$tcpath:$PATH
+    echo "path = $tcpath"
+    echo "CROSS_COMPILE = $CROSS_COMPILE"
+}
+function use-linaro-baremetal4.9() {
+    local tcpath=/opt/gcc-linaro-arm-none-eabi-4.9-2014.05_linux/bin
     export CROSS_COMPILE=arm-none-eabi-
     wf-remove-toolchain-from-path
     export PATH=$tcpath:$PATH
@@ -108,7 +135,7 @@ function use-linaro-baremetal() {
     echo "CROSS_COMPILE = $CROSS_COMPILE"
 }
 function use-linaro-linux() {
-    local tcpath=/opt/gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux/bin
+    local tcpath=/opt/gcc-linaro-arm-linux-gnueabihf-4.9-2014.05_linux/bin
     export CROSS_COMPILE=arm-linux-gnueabihf-
     wf-remove-toolchain-from-path
     export PATH=$tcpath:$PATH
@@ -151,3 +178,5 @@ RPROMPT=$'$(vcs_info_wrapper)'
 
 autoload run-help
 bindkey '\eh' run-help
+
+#autoload -U zmv
