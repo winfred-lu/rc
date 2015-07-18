@@ -10,3 +10,4 @@ GSYMS
 GTAGS
 *.pyc
 *.elc
+*.class
