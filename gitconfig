@@ -9,6 +9,8 @@
 	st = status
 	br = branch
 	gh = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	df = diff
+	ds = diff --stat -r
 
 [core]
 	excludesfile = /home/winfred/.gitignore
