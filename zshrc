@@ -40,6 +40,7 @@ alias e="emacsclient -nw"
 alias E='SUDO_EDITOR="emacsclient -t -a emacs" sudoedit'
 alias ls="ls -F --color=auto"
 alias gencs='find . -type f -name "*.[chxsS]" -o -name "*.cpp" >! cscope.files; cscope -b -k; ctags -R -n -e'
+alias genarcs='find . -type f -regextype posix-egrep -regex ".*\.(cpp|pde|ino|h)$" >! cscope.files; cscope -b -k; ctags -R -n -e'
 
 # nocorrect
 alias irssi="nocorrect irssi"
