@@ -9,6 +9,7 @@ export XMODIFIERS='@im=gcin'
 export GTK_IM_MODULE="gcin"
 export QT_IM_MODULE="gcin"
 exec /usr/bin/gcin &
+exec /usr/bin/xbindkeys &
 
 xrdb -merge ~/.Xresources
 
