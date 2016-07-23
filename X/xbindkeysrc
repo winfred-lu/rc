@@ -66,13 +66,13 @@
 #  Control + b:2 + Release
 
 ## Thinkpad (X220) keys to increase/decrease the volume or toggle mute
-"amixer set Master playback 1%+"
+"volume.sh up"
     m:0x0 + c:123
     XF86AudioRaiseVolume
-"amixer set Master playback 1%-"
+"volume.sh down"
     m:0x0 + c:122
     XF86AudioLowerVolume
-"amixer set Master toggle"
+"volume.sh mute"
     m:0x0 + c:121
     XF86AudioMute
 
