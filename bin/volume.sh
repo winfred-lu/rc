@@ -38,6 +38,22 @@ else
 fi
 
 # Desktop notify to display the volume
-notify-send "Volume" -i $icon -h int:value:$VOLUME -h string:synchronous:volume
+#notify-send "Volume" -i $icon -h int:value:$VOLUME -h string:synchronous:volume
+
+uid_file="/tmp/volume_notify_${USER}"
+if [ -s $uid_file ]; then
+  uid=`cat $uid_file`
+else
+  uid=1
+fi
+
+# Use gdbus before libnotify is patched for the replacement cabailities.
+# This replaces the existing notification with the same $uid,
+# which prevents the flooding notifications.
+gdbus call --session --dest org.freedesktop.Notifications \
+  --object-path /org/freedesktop/Notifications \
+  --method org.freedesktop.Notifications.Notify \
+  "Volume" "$uid" $icon "" " " \[\] "{'value': <$VOLUME>}" 3000 \
+  | sed -r 's/\(uint32 (.+)\,\)/\1/' > $uid_file
 
 exit 0
