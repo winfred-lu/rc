@@ -23,14 +23,21 @@ esac
 VOLUME=$(amixer get Master | grep 'Left:' | cut -d ' ' -f 7 | sed -e 's/[^0-9]//g')
 STATE=$(amixer get Master | grep 'Left:' | grep -o "\[off\]")
 
-# Run volnoti if it has not been executed yet
-pgrep -x volnoti > /dev/null || volnoti
-
-# Show volume with volnoti OSD
+# Decide the icon according to the volume
+icon=""
 if [[ -n $STATE ]]; then
-  volnoti-show -m
+  icon="audio-volume-muted"
 else
-  volnoti-show $VOLUME
+  if [ $VOLUME -lt 33 ]; then
+    icon="audio-volume-low"
+  elif [ $VOLUME -lt 67 ]; then
+    icon="audio-volume-medium"
+  else
+    icon="audio-volume-high"
+  fi
 fi
+
+# Desktop notify to display the volume
+notify-send "Volume" -i $icon -h int:value:$VOLUME -h string:synchronous:volume
 
 exit 0
