@@ -15,13 +15,16 @@ compinit
 
 # history
 HISTFILE=~/.history
-HISTSIZE=1000
-SAVEHIST=2000
-export HISTIGNORE="&:ls:b:exit:clear:cd:cd .."
+HISTSIZE=3000
+SAVEHIST=6000
+export HISTORY_IGNORE="(ls*|b|exit|clear|cd|cd -|cd ..)"
 setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
 
 # key bindings
 bindkey -v
