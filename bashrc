@@ -55,6 +55,11 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
+
+if [ -n "$TMUX" ]; then
+    WINDOW=`tmux display -pt "${TMUX_PANE:?}" '#{pane_index}'`
+fi
+
 if [ "$color_prompt" = yes ]; then
     PS1="${debian_chroot:+($debian_chroot)}\[\033[36m\]\h\[\033[0m\]${WINDOW+ \[\033[32m\]W$WINDOW\[\033[0m\]} [\[\033[1;33m\]\w\[\033[0m\]]\\$ "
 else
