@@ -31,7 +31,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
@@ -56,32 +56,16 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 if [ "$color_prompt" = yes ]; then
-  if [ "$WINDOW" ]; then
-    if [ `id -u` == "0" ]; then
-      PS1="\[\033[36m\]\h\[\033[0m\] \[\033[32m\]W$WINDOW\[\033[0m\] [\[\033[1;33m\]\w\[\033[0m\]]\[\033[1;31m\]\\$\[\033[0m\] "
-    else
-      PS1="\[\033[36m\]\h\[\033[0m\] \[\033[32m\]W$WINDOW\[\033[0m\] [\[\033[1;33m\]\w\[\033[0m\]]\\$ "
-    fi
-  else
-    if [ `id -u` == "0" ]; then
-      PS1="\[\033[36m\]\h\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] \[\033[1;31m\]\\$\[\033[0m\] "
-    else
-      PS1="\[\033[36m\]\h\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] \\$ "
-    fi
-  fi
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[36m\]\h\[\033[0m\]${WINDOW+ \[\033[32m\]W$WINDOW\[\033[0m\]} [\[\033[1;33m\]\w\[\033[0m\]]\\$ "
 else
-  if [ "$WINDOW" ]; then
-    PS1="\h W$WINDOW \w \\$ "
-  else
-    PS1="\h \w \\$ "
-  fi
+    PS1='${debian_chroot:+($debian_chroot)}\h${WINDOW:+ W$WINDOW} \w \$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
