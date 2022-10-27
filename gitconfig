@@ -16,8 +16,11 @@
 	excludesfile = /home/winfred/.gitignore
 	autocrlf = false
 	safecrlf = warn
-	#gitproxy = /home/winfred/bin/gitproxy.sh
+[http]
+	proxy = http://"user":"passwd"@host:8080
 [push]
 	default = simple
 [merge]
 	tool = vimdiff
+[credential]
+	helper = cache
