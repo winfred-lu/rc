@@ -17,7 +17,9 @@
 	autocrlf = false
 	safecrlf = warn
 [http]
-	proxy = http://"user":"passwd"@host:8080
+	proxy = http://"user":"passwd"@host:port
+[https]
+	proxy = https://"user":"password"@host:port
 [push]
 	default = simple
 [merge]
