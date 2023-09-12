@@ -184,3 +184,10 @@ autoload run-help
 bindkey '\eh' run-help
 
 #autoload -U zmv
+
+export FZF_DEFAULT_COMMAND='fd'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh

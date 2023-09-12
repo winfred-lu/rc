@@ -142,3 +142,10 @@ alias vi=vim
 alias gencs='find . -type f -name "*.[chxsS]" -o -name "*.cpp" >! cscope.files; cscope -b -k; ctags -R -n -e'
 alias genarcs='find . -type f -regextype posix-egrep -regex ".*\.(cpp|pde|ino|h)$" >! cscope.files; cscope -b -k; ctags -R -n -e'
 alias man="LANG=en_US.iso8859-1 man"
+
+export FZF_DEFAULT_COMMAND='fd'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND -t f"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
