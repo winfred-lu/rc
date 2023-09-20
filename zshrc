@@ -87,7 +87,7 @@ export LESS="-FRX"
 case $TTY in
 /dev/pts*)
     if [[ -n $TMUX ]]; then
-        export TERM=screen-256color-bce
+        export TERM=tmux-256color
     else
         export TERM=rxvt-unicode-256color
     fi
