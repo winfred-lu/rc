@@ -11,3 +11,4 @@ GTAGS
 *.pyc
 *.elc
 *.class
+nvim/lazy-lock.json
