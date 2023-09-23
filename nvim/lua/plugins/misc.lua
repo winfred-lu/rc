@@ -9,6 +9,5 @@ return {
   },
 
   { 'tpope/vim-fugitive' },
-  { 'hrsh7th/nvim-cmp' },
 }
 
