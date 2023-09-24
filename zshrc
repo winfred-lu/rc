@@ -114,7 +114,9 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # paths
 export PATH="$PATH:/sbin:/usr/sbin"
-export PATH="$PATH:$HOME/bin:./"
+export PATH="$PATH:/usr/lib/cargo/bin"
+export PATH="$PATH:/usr/local/nvim-linux64/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/bin:./"
 
 # toolchain settings
 function wf-remove-toolchain-from-path() {
