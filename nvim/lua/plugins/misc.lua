@@ -7,7 +7,9 @@ return {
     'romainl/Vim-cool',
     event = "VeryLazy",
   },
-
-  { 'tpope/vim-fugitive' },
+  {
+    'tpope/vim-fugitive',
+    event = "VeryLazy",
+  },
 }
 
